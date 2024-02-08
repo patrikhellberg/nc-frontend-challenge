@@ -1,14 +1,14 @@
 import { Component } from '@angular/core'
-import { FullwidthtextComponent } from '../fullwidthtext/fullwidthtext.component'
+import { FullWidthTextComponent } from '../fullwidthtext/fullwidthtext.component'
 import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'header-text',
   standalone: true,
-  imports: [FullwidthtextComponent],
+  imports: [FullWidthTextComponent],
   template: `<full-width-text [text]="text" textElement="h1" /> `,
 })
-export class HeadertextComponent {
+export class HeaderTextComponent {
   constructor(public route: ActivatedRoute) {}
   text = ''
   TEXT_FALLBACK = 'Type an event to display here'

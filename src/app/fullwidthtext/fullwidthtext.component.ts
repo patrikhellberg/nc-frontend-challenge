@@ -12,35 +12,29 @@ import {
   imports: [],
   templateUrl: './fullwidthtext.component.html',
 })
-export class FullwidthtextComponent {
+export class FullWidthTextComponent {
   @Input({ required: true }) text!: string
   @Input() textElement: 'h1' | 'p' = 'p'
 
   @ViewChild('container', { static: true })
   public container: ElementRef<HTMLDivElement> | null = null
 
-  fontSize = 0
-
   setFontSize(text: string) {
-    const PADDING = 32
     const container = this.container?.nativeElement
+    const INITIAL_FONT_SIZE = 16
     if (!container || !text) return
 
-    this.fontSize = 0
     container.innerHTML = ''
 
     const element = document.createElement(this.textElement)
     element.innerText = text
-    element.style.fontSize = '0'
+    element.style.fontSize = `${INITIAL_FONT_SIZE}px`
     container.appendChild(element)
 
-    while (
-      element.getBoundingClientRect().width + PADDING <
-      window.innerWidth
-    ) {
-      element.style.fontSize = `${this.fontSize}px`
-      this.fontSize++
-    }
+    const resizeFactor =
+      element.getBoundingClientRect().width / window.innerWidth
+    const targetFontSize = INITIAL_FONT_SIZE / resizeFactor
+    element.style.fontSize = `${targetFontSize}px`
   }
 
   ngOnChanges(changes: SimpleChanges) {

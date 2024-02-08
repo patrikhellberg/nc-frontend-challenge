@@ -26,7 +26,7 @@ The project is using the url query parameters to persist data between reloads. I
 ### Fitting text to viewport width
 
 In order to be able to calculate the width of the text elements, the element needs to be measured and compared to the viewport width. This is because the contents of the string is mostly unknown and the width of individual characters differs for non-monospace fonts.
-In order to achieve this the element is first rendered (to be able to measure it) with a 0px font-size, then measured. A while loop increases the fontsize gradually until it is as wide as the screen is.
+In order to achieve this the element is first rendered (to be able to measure it) with an arbitrary font-size, then measured. From this measurement and the viewport width the factor with which the fontsize needs to be adjusted can be determined.
 
 An issue with this approach turned out to be that loading fonts take a small ammount of time. Since the font specified in the design is not a common font to have installed on your computer, the font first needs to be fetched before the text can be rendered with that font. Because the system default for sans-serif appears to have less wide letters on font weight 800 the calculation ended up rendering the text too wide.
 In order to handle this, the text is first rendered transparent and when the font most likely has been fetched, the calculation is made and the opacity is set.
@@ -50,13 +50,13 @@ The date input obviously doesn't look exactly like the design. However I decided
 
 Since Figma doesn't allow a guest user to display spacings between elements, many of the spacings are measured by eye.
 
+In the design the text doesn't seem to be the entire width of the viewport, but the brief said that the text should be as wide as possible. Because of that the current implementation makes the text as wide as possible. To align this with the design a padding could be subtracted from the viewport width when calculating the resize factor, or by basing the calculation of a smaller parent element.
+
 ## Future considerations
 
-To improve the application further, I would consider setting the width of the fullwidthtext component using css transform. However this breaks the current requirement that it should be set using font-size. Using css transform would allow for measuring the element width once, and then from that measurement be able to calculate how to scale the element in order to fill the entire viewport width. That would mean running a lot less javascript on the client.
+If this was a production application I would considering doing an initial render on the server. Currently only the head of the application would be accessible to web crawlers, but with an initial server render it would be possible to add information valuable to improve search engine performance.
 
-If this was a production application I would also considering doing an initial render on the server. Currently only the head of the application would be accessible to web crawlers, but with an initial server render it would be possible to add information valuable to improve search engine performance.
-
-To make the user experience smoother I would also consider adding a css transition to the fulltextwidth component to make the width changes less yanky. However that becomes difficult with the current implementation using font-size. In a case where a css transform is used to set width, transitioning would be easier to implement.
+To make the user experience smoother I would also consider adding a css transition to the fulltextwidth component to make the width changes less yanky.
 
 Another consideration would be to make the application PWA compatible, since it might be a handy app to put on your phone home screen.
 

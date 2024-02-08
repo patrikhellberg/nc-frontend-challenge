@@ -1,11 +1,11 @@
 import { Component } from '@angular/core'
-import { FullwidthtextComponent } from '../fullwidthtext/fullwidthtext.component'
+import { FullWidthTextComponent } from '../fullwidthtext/fullwidthtext.component'
 import { ActivatedRoute } from '@angular/router'
 
 @Component({
   selector: 'countdown',
   standalone: true,
-  imports: [FullwidthtextComponent],
+  imports: [FullWidthTextComponent],
   template: ` <full-width-text [text]="text" /> `,
 })
 export class CountdownComponent {
