@@ -15,7 +15,7 @@ export class CountdownComponent {
   interval: ReturnType<typeof setInterval> | undefined
 
   msToDateString(ms: number): string {
-    if (ms <= 0) return 'Wow! Nu är det dags!'
+    if (ms <= 0) return 'Wow! We are there!'
 
     const totalSeconds = Math.floor(ms / 1000)
     const totalMinutes = Math.floor(totalSeconds / 60)
