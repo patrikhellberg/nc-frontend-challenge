@@ -3,6 +3,7 @@ import { RouterOutlet } from '@angular/router';
 import { QueryInputFieldComponent } from './queryinputfield/queryinputfield.component';
 import { FullwidthtextComponent } from './fullwidthtext/fullwidthtext.component';
 import { HeadertextComponent } from './headertext/headertext.component';
+import { CountdownComponent } from './countdown/countdown.component';
 
 @Component({
   selector: 'app-root',
@@ -12,6 +13,7 @@ import { HeadertextComponent } from './headertext/headertext.component';
     QueryInputFieldComponent,
     FullwidthtextComponent,
     HeadertextComponent,
+    CountdownComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
