@@ -28,7 +28,7 @@ export class CountdownComponent {
 
     const stringParts: string[] = []
     if (days) stringParts.push(`${days} ${days > 1 ? 'days' : 'day'}`)
-    if (hours) stringParts.push(`${hours} h`)
+    if (hours) stringParts.push(`${hours}h`)
     if (minutes) stringParts.push(`${minutes}m`)
     if (seconds) stringParts.push(`${seconds}s`)
 
