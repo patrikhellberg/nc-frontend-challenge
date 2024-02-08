@@ -44,3 +44,7 @@ To make the user experience smoother I would also consider adding a css transiti
 Another consideration would be to turn the application PWA compatible, since it might be a handy app to put on your phone home screen.
 
 A small consistency improvement would also be to update the countdown text. Currently we use "days" for days and "h" for hours, it would be more consistent to abbreviate either all or none of the labels. Also there is a space between the hour value and the "h" in the design which as was not sure if it was intentional, so I removed it.
+
+## Testing
+
+This project has no tests. If this was to be relases as a production application there would of course be a need for at least unit tests. Since this is a code assignment and testing was not mentioned in the brief, tests have not been implemented. Please let me know if I should add tests.
