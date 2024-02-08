@@ -1,5 +1,21 @@
 # Natural Cycles Frontend Challenge
 
+## Visit app
+
+[Natural Cycles | Frontend Challenge](https://natural-cycles.netlify.app/)
+
+## Running locally
+
+Make sure to have angular CLI installed
+[Angular CLI](https://angular.io/cli)
+
+```shell
+git clone https://github.com/patrikhellberg/nc-frontend-challenge.git
+cd nc-frontend-challenge
+ng serve
+
+```
+
 ## Concepts
 
 ### Persisting data
