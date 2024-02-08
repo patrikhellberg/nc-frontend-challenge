@@ -26,7 +26,7 @@ The project is using the url query parameters to persist data between reloads. I
 ### Fitting text to viewport width
 
 In order to be able to calculate the width of the text elements, the element needs to be measured and compared to the viewport width. This is because the contents of the string is mostly unknown and the width of individual characters differs for non-monospace fonts.
-In order to achieve this the element is first rendered (to be able to measure it) with an arbitrary font-size, then measured. From this measurement and the viewport width the factor with which the fontsize needs to be adjusted can be determined.
+In order to achieve this the element is first rendered (to be able to measure it) with an arbitrary font-size, then measured. From this measurement and the viewport width the factor with which the arbitrary fontsize needs to be adjusted can be determined.
 
 An issue with this approach turned out to be that loading fonts take a small ammount of time. Since the font specified in the design is not a common font to have installed on your computer, the font first needs to be fetched before the text can be rendered with that font. Because the system default for sans-serif appears to have less wide letters on font weight 800 the calculation ended up rendering the text too wide.
 In order to handle this, the text is first rendered transparent and when the font most likely has been fetched, the calculation is made and the opacity is set.
@@ -60,7 +60,7 @@ To make the user experience smoother I would also consider adding a css transiti
 
 Another consideration would be to make the application PWA compatible, since it might be a handy app to put on your phone home screen.
 
-A small consistency improvement would also be to update the countdown text. Currently we use "days" for days and "h" for hours, it would be more consistent to abbreviate either all or none of the labels. Also there is a space between the hour value and the "h" in the design which as was not sure if it was intentional, so I removed it.
+A small consistency improvement would also be to update the countdown text. Currently we use "days" for days and "h" for hours, it would be more consistent to abbreviate either all or none of the labels. Also there is a space between the hour value and the "h" in the design which I was not sure if it was intentional, so I removed it.
 
 ## Testing
 
