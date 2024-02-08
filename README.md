@@ -6,7 +6,8 @@
 
 ## Running locally
 
-Make sure to have angular CLI installed
+Make sure to have Angular CLI installed
+
 [Angular CLI](https://angular.io/cli)
 
 ```shell
@@ -20,7 +21,7 @@ ng serve
 
 ### Persisting data
 
-The project is using the url query parameters to persist data between query parameters. I preferred using query parameters over localstorage or a cookie since it allows a link to a specific event to be shared using only the link. A general input component connected to the query parameters was created in order to handle this in a simple way.
+The project is using the url query parameters to persist data between reloads. I preferred using query parameters over localstorage or a cookie since it allows a link to a specific event to be shared easily. A general input component connected to the query parameters was created in order to handle this in a simple way.
 
 ### Fitting text to viewport width
 
