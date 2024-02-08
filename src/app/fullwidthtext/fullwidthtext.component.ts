@@ -4,7 +4,7 @@ import {
   Input,
   SimpleChanges,
   ViewChild,
-} from '@angular/core';
+} from '@angular/core'
 
 @Component({
   selector: 'full-width-text',
@@ -13,38 +13,38 @@ import {
   templateUrl: './fullwidthtext.component.html',
 })
 export class FullwidthtextComponent {
-  @Input({ required: true }) text!: string;
-  @Input() textElement: 'h1' | 'p' = 'p';
+  @Input({ required: true }) text!: string
+  @Input() textElement: 'h1' | 'p' = 'p'
 
   @ViewChild('container', { static: true })
-  public container: ElementRef<HTMLDivElement> | null = null;
+  public container: ElementRef<HTMLDivElement> | null = null
 
-  fontSize = 0;
+  fontSize = 0
 
   setFontSize(text: string) {
-    const PADDING = 32;
-    const container = this.container?.nativeElement;
-    if (!container || !text) return;
+    const PADDING = 32
+    const container = this.container?.nativeElement
+    if (!container || !text) return
 
-    this.fontSize = 0;
-    container.innerHTML = '';
+    this.fontSize = 0
+    container.innerHTML = ''
 
-    const element = document.createElement(this.textElement);
-    element.innerText = text;
-    element.style.fontSize = '0';
-    container.appendChild(element);
+    const element = document.createElement(this.textElement)
+    element.innerText = text
+    element.style.fontSize = '0'
+    container.appendChild(element)
 
     while (
       element.getBoundingClientRect().width + PADDING <
       window.innerWidth
     ) {
-      element.style.fontSize = `${this.fontSize}px`;
-      this.fontSize++;
+      element.style.fontSize = `${this.fontSize}px`
+      this.fontSize++
     }
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    this.setFontSize(changes['text'].currentValue);
+    this.setFontSize(changes['text'].currentValue)
   }
 
   ngOnInit() {
@@ -56,14 +56,14 @@ export class FullwidthtextComponent {
     setTimeout(() => {
       if (this.container) {
         this.container.nativeElement.style.transition =
-          'opacity 500ms ease-in-out';
-        this.container.nativeElement.style.opacity = '100';
+          'opacity 500ms ease-in-out'
+        this.container.nativeElement.style.opacity = '100'
       }
-      this.setFontSize(this.text);
-    }, 500);
+      this.setFontSize(this.text)
+    }, 500)
 
     window.addEventListener('resize', () => {
-      this.setFontSize(this.text);
-    });
+      this.setFontSize(this.text)
+    })
   }
 }

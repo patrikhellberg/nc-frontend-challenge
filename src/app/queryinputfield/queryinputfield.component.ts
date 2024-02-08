@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Component, Input } from '@angular/core'
+import { ActivatedRoute, Router } from '@angular/router'
 
 @Component({
   selector: 'query-input-field',
@@ -9,11 +9,11 @@ import { ActivatedRoute, Router } from '@angular/router';
   templateUrl: './queryinputfield.component.html',
 })
 export class QueryInputFieldComponent {
-  @Input({ required: true }) queryKey!: string;
-  @Input({ required: true }) label!: string;
-  @Input() fieldType = 'text';
+  @Input({ required: true }) queryKey!: string
+  @Input({ required: true }) label!: string
+  @Input() fieldType = 'text'
 
-  inputVal = '';
+  inputVal = ''
 
   constructor(public router: Router, public route: ActivatedRoute) {}
 
@@ -21,12 +21,12 @@ export class QueryInputFieldComponent {
     this.router.navigate([''], {
       queryParams: { [this.queryKey]: e.target.value },
       queryParamsHandling: 'merge',
-    });
+    })
   }
 
   ngOnInit() {
     this.route.queryParamMap.subscribe((p) => {
-      this.inputVal = p.get(this.queryKey) || '';
-    });
+      this.inputVal = p.get(this.queryKey) || ''
+    })
   }
 }
