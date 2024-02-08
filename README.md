@@ -41,4 +41,6 @@ If this was a production application I would also considering doing an initial r
 
 To make the user experience smoother I would also consider adding a css transition to the fulltextwidth component to make the width changes less yanky. However that becomes difficult with the current implementation using font-size. In a case where a css transform is used to set width, transitioning would be easier to implement.
 
+Another consideration would be to turn the application PWA compatible, since it might be a handy app to put on your phone home screen.
+
 A small consistency improvement would also be to update the countdown text. Currently we use "days" for days and "h" for hours, it would be more consistent to abbreviate either all or none of the labels. Also there is a space between the hour value and the "h" in the design which as was not sure if it was intentional, so I removed it.
