@@ -29,7 +29,7 @@ In order to be able to calculate the width of the text elements, the element nee
 In order to achieve this the element is first rendered (to be able to measure it) with a 0px font-size, then measured. A while loop increases the fontsize gradually until it is as wide as the screen is.
 
 An issue with this approach turned out to be that loading fonts take a small ammount of time. Since the font specified in the design is not a common font to have installed on your computer, the font first needs to be fetched before the text can be rendered with that font. Because the system default for sans-serif appears to have less wide letters on font weight 800 the calculation ended up rendering the text too wide.
-In order to handle this, the text is first rendered transparent and then most likely has the correct font when the calculation is made and the opacity is set.
+In order to handle this, the text is first rendered transparent and when the font most likely has been fetched, the calculation is made and the opacity is set.
 
 Since viewports might be resized, the setFontSize function is also passed to the callback of a window resize eventlistener.
 
@@ -37,7 +37,7 @@ To make the fullwidthtext more versatile, it takes an optional input determining
 
 ### Countdown
 
-To handle counting down to the target date, the current time and the target date/time and current date/time is compared to get the difference. Then an interval runs every 1000ms (since the smallest increment shown to the user is 1s). The interval callback makes a new comparision and parses and sets the new text to be displayed. The parser also makes sure no negative values are handled and then instead indicates that the target date has been reached.
+To handle counting down to the target date, the target date/time and current date/time is compared to get the difference. Then an interval runs every 1000ms (since the smallest increment shown to the user is 1s). The interval callback makes a new comparision and parses the result and sets the new text to be displayed. The parser also makes sure no negative values are handled and then instead indicates that the target date has been reached.
 Each time the date changes the interval is cleared and a new interval is set. The interval is also cleared when the component is destroyed.
 
 ### Fallbacks
@@ -58,7 +58,7 @@ If this was a production application I would also considering doing an initial r
 
 To make the user experience smoother I would also consider adding a css transition to the fulltextwidth component to make the width changes less yanky. However that becomes difficult with the current implementation using font-size. In a case where a css transform is used to set width, transitioning would be easier to implement.
 
-Another consideration would be to turn the application PWA compatible, since it might be a handy app to put on your phone home screen.
+Another consideration would be to make the application PWA compatible, since it might be a handy app to put on your phone home screen.
 
 A small consistency improvement would also be to update the countdown text. Currently we use "days" for days and "h" for hours, it would be more consistent to abbreviate either all or none of the labels. Also there is a space between the hour value and the "h" in the design which as was not sure if it was intentional, so I removed it.
 
